@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clarity | Explainable decision support</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="eyebrow">CLARITY / DECISION SUPPORT</div>
+      <h1>Understand the decision<br><em>before</em> you make it.</h1>
+      <p class="intro">A transparent pre-screen for small-business lending. See the recommendation, confidence, and the evidence behind every result.</p>
+    </header>
+    <section class="workspace">
+      <form id="assessment-form" class="card form-card">
+        <div class="section-heading"><span>01</span><h2>Application inputs</h2></div>
+        <label>Credit score<input name="credit_score" type="number" min="300" max="850" value="720" required><small>300–850</small></label>
+        <label>Debt-to-income ratio (%)<input name="debt_to_income" type="number" min="0" max="100" step="0.1" value="32" required></label>
+        <label>Annual business income ($)<input name="annual_income" type="number" min="1" value="120000" required></label>
+        <label>Cash reserves ($)<input name="cash_reserves" type="number" min="0" value="45000" required></label>
+        <label>Years in business<input name="business_years" type="number" min="0" step="0.1" value="4" required></label>
+        <label>Requested loan amount ($)<input name="requested_amount" type="number" min="0" value="50000" required></label>
+        <button type="submit">Generate assessment <span>→</span></button>
+        <p id="error" class="error" role="alert"></p>
+      </form>
+      <section id="result" class="card result-card" aria-live="polite">
+        <div class="empty"><div class="orb">✦</div><h2>Your assessment will appear here</h2><p>Complete the application inputs to see an evidence-based recommendation.</p></div>
+      </section>
+    </section>
+    <footer><span>MODEL: WEIGHTED SCORECARD</span><span>FOR DECISION SUPPORT ONLY · NOT FINANCIAL ADVICE</span></footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

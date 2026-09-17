@@ -1,28 +1,23 @@
 # aiml
 
-This repository contains a lightweight explainable AI decision-support system.
+This repository contains an explainable AI decision-support system for small-business lending.
 
-## What is included
+## Included
 
-- `decision_support/engine.py`: a weighted scoring model that predicts an `approve` or `reject` recommendation
-- `decision_support/__init__.py`: package exports
-- `tests/test_decision_support.py`: focused validation for prediction, confidence, and explanations
+- `model.py`: a transparent weighted scorecard model that produces a recommendation, confidence, and factor-level explanation
+- `server.py`: a lightweight HTTP server that serves the app and `/api/assess` endpoint
+- `static/`: web UI assets for the decision-support experience
+- `tests/test_model.py`: validation for recommendations, explanation quality, and invalid input handling
 
-## Example usage
+## Run locally
 
-```python
-from decision_support import DecisionSupportSystem
-
-system = DecisionSupportSystem()
-scenario = {
-    "market_potential": "high",
-    "expected_value": 0.9,
-    "strategic_fit": "strong",
-    "risk_level": "low",
-    "cost": 0.2,
-}
-
-print(system.recommend(scenario))
+```bash
+python3 server.py
 ```
 
-The system returns a prediction, confidence score, major contributing factors, and human-readable rationale for the recommendation.
+Then open:
+
+- http://localhost:8000
+- API: http://localhost:8000/api/health
+
+The app evaluates application inputs and returns a recommendation along with confidence and the strongest positive/negative factors driving the decision.
