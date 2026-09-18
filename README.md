@@ -1,23 +1,19 @@
-# aiml
+# Explainable AI Multi-Domain Decision Support
 
-This repository contains an explainable AI decision-support system for small-business lending.
+This repository contains a runnable Streamlit hackathon prototype for an explainable decision-support system spanning business lending, clinical risk support, and investment risk.
 
 ## Included
 
-- `model.py`: a transparent weighted scorecard model that produces a recommendation, confidence, and factor-level explanation
-- `server.py`: a lightweight HTTP server that serves the app and `/api/assess` endpoint
-- `static/`: web UI assets for the decision-support experience
-- `tests/test_model.py`: validation for recommendations, explanation quality, and invalid input handling
+- `app.py`: Streamlit dashboard entry point with domain switching
+- `models.py`: deterministic synthetic model training, TreeSHAP attributions, and LIME explanations
+- `components/`: reusable input, prediction, and explainability UI sections
+- `model.py`, `server.py`, and `decision_support/`: retained legacy HTTP/scorecard API
 
 ## Run locally
 
 ```bash
-python3 server.py
+python3 -m pip install -r requirements.txt
+streamlit run app.py
 ```
 
-Then open:
-
-- http://localhost:8000
-- API: http://localhost:8000/api/health
-
-The app evaluates application inputs and returns a recommendation along with confidence and the strongest positive/negative factors driving the decision.
+The app uses deterministic synthetic data so it runs out of the box without downloading a dataset or model artifact. It is a prototype and must not be used as the sole basis for lending, clinical, or investment decisions.
