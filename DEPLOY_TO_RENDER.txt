@@ -28,7 +28,7 @@ HOST THIS APP ON RENDER
 CURRENT DEPLOYMENT
 ------------------
 LIVE WEBSITE URL
-https://aiml-gvx9.onrender.com
+https://aiml-q7it.onrender.com
 
 Git branch: naveen15708-xai-dashboard
 Deployment type: Render Static Site
