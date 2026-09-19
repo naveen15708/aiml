@@ -6,6 +6,7 @@ import streamlit as st
 
 from components.explainability import render_explanation
 from components.prediction import render_prediction
+from components.reporting import build_report_pdf
 from components.what_if import render_counterfactual, render_inputs
 from models import DOMAIN_SPECS, MODELS
 
@@ -18,6 +19,7 @@ st.markdown(
 
 domain = st.sidebar.radio("Choose a decision domain", list(DOMAIN_SPECS), index=0)
 spec = DOMAIN_SPECS[domain]
+model = MODELS[domain]
 st.sidebar.divider()
 st.sidebar.caption("Prototype model card")
 st.sidebar.write("Synthetic, deterministic training data")
@@ -30,12 +32,21 @@ input_column, result_column = st.columns([0.9, 1.35], gap="large")
 with input_column:
     values = render_inputs(spec, spec.key)
 with result_column:
-    result = MODELS[domain].predict(values)
+    result = model.predict(values)
+    lime_values = model.lime(values)
     render_prediction(result)
-    render_explanation(result, MODELS[domain].lime(values))
+    render_explanation(result, lime_values)
+
+pdf_report = build_report_pdf(domain, values, result, lime_values)
+st.download_button(
+    label="Download report as PDF",
+    data=pdf_report,
+    file_name=f"{domain.lower().replace(' ', '_')}_decision_report.pdf",
+    mime="application/pdf",
+)
 
 st.divider()
-render_counterfactual(spec, MODELS[domain], values)
+render_counterfactual(spec, model, values)
 st.divider()
 st.subheader("Current scenario details")
 st.dataframe(
@@ -44,5 +55,5 @@ st.dataframe(
         for feature in spec.features
     ],
     hide_index=True,
-    use_container_width=True,
+    width="stretch",
 )

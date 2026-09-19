@@ -20,4 +20,4 @@ def render_explanation(result: dict, lime_values: list[dict]) -> None:
     st.pyplot(fig, clear_figure=True)
     st.caption("SHAP: red bars push toward higher risk; green bars reduce risk for this specific scenario.")
     with st.expander("Compare with LIME local explanation"):
-        st.dataframe(pd.DataFrame(lime_values), hide_index=True, use_container_width=True)
+        st.dataframe(pd.DataFrame(lime_values), hide_index=True, width="stretch")
