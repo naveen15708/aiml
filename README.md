@@ -16,12 +16,12 @@ python3 -m pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Deploy on Render
+## Deploy the static site on Render
 
 1. Push this repository to GitHub or GitLab.
 2. In Render, choose **New > Blueprint** and select the repository. Render will read `render.yaml`.
-3. Confirm the service is a **Web Service**, then deploy. No environment variables are required.
+3. Deploy the detected **Static Site**. No build command or environment variables are required.
 
-The blueprint installs `requirements.txt` and starts Streamlit on Render's assigned `$PORT`. After the build completes, open the `onrender.com` URL shown in the service dashboard.
+The site publishes the `static/` directory directly. The browser runs the transparent scorecard locally, so the deployed static site does not need the Python API or a server process. After deployment, open the `onrender.com` URL shown in the service dashboard.
 
 The app uses deterministic synthetic data so it runs out of the box without downloading a dataset or model artifact. It is a prototype and must not be used as the sole basis for lending, clinical, or investment decisions.

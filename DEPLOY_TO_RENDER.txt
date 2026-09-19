@@ -14,11 +14,9 @@ HOST THIS APP ON RENDER
 
 6. Confirm the service settings:
 
-   Service type: Web Service
-   Runtime: Python
-   Build command: pip install -r requirements.txt
-   Start command: streamlit run app.py --server.address 0.0.0.0 --server.port $PORT
-   Health check path: /_stcore/health
+   Service type: Static Site
+   Publish directory: ./static
+   Build command: leave blank
 
 7. Click Apply or Deploy Blueprint.
 
@@ -29,8 +27,8 @@ HOST THIS APP ON RENDER
 
 NOTES
 -----
-- No environment variables are required.
-- The app entry point is app.py.
-- server.py is a separate legacy API and is not used by the Streamlit dashboard.
+- No environment variables or build command are required.
+- The static site runs the scorecard in the browser and does not require a Python server.
+- app.py and server.py are retained as separate server-based versions of the project.
 - On Render's free plan, the service may sleep after inactivity and take a short time to wake up.
 - This is a prototype using synthetic data. It should not be used as the sole basis for lending, clinical, or investment decisions.
