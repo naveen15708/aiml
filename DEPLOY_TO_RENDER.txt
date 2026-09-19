@@ -25,6 +25,18 @@ HOST THIS APP ON RENDER
 
 9. Open that URL to use the app.
 
+CURRENT DEPLOYMENT
+------------------
+URL: https://aiml-xlg0.onrender.com
+Git branch: naveen15708-xai-dashboard
+Latest deployment commit: af91930 Fix static Render deployment
+
+Render settings used:
+Service type: Static Site
+Publish directory: static
+Build command: blank
+Start command: blank
+
 NOTES
 -----
 - No environment variables or build command are required.
