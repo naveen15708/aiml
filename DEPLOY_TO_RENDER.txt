@@ -37,6 +37,23 @@ Publish directory: static
 Build command: blank
 Start command: blank
 
+BACKEND VALUES (OPTIONAL WEB SERVICE)
+-------------------------------------
+Use these values only if you want to deploy the Python Streamlit backend separately:
+
+Service type: Web Service
+Runtime: Python 3
+Root directory: blank
+Build command: pip install -r requirements.txt
+Start command: streamlit run app.py --server.address 0.0.0.0 --server.port $PORT
+Health check path: /_stcore/health
+Environment variables: none
+Publish directory: blank
+
+The legacy HTTP API uses server.py, but it binds to localhost:8000 and is not
+the backend used by the current static site. The static site calculates results
+in the browser and requires no backend service.
+
 NOTES
 -----
 - No environment variables or build command are required.
